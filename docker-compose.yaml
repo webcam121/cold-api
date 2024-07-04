@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+
+  postgres:
+    container_name: agent-postgres
+    restart: always
+    image: postgres:11-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - ./.env
+
+volumes:
+  postgres_data:
+
+

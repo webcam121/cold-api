@@ -1,0 +1,10 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ec2-user/cold-caller-api/
+hooks:
+  ApplicationStart:
+   - location: celery_beat_run.sh
+     timeout: 1800
+     runas: root

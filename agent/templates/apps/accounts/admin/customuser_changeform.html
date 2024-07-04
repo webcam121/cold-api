@@ -1,0 +1,11 @@
+{% extends 'admin/change_form.html' %}
+
+{% block submit_buttons_bottom %}
+
+    <div class="submit-row">
+        <input type="submit" value="Run Scraper" name="_scrape">
+        <input type="submit" value="Send Scraper Result" name="_send_scraper_result">
+        <input type="submit" value="Download evidence" name="_download_evidence">
+    </div>
+    {{ block.super }}
+{% endblock %}

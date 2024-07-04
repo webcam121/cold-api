@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+
+  celery_beat:
+    restart: always
+    build: .
+    command: celery -A agent beat -l info
+    volumes:
+      - .:/usr/src/app
+    env_file:
+      - ./.env
+    environment:
+      - DJANGO_SETTINGS_MODULE=${DJANGO_SETTINGS_MODULE}

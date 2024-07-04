@@ -1,0 +1,53 @@
+{% load rest_framework %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Outbound Call</title>
+</head>
+<body>
+    <div class="container">
+        {% if error %}
+            <div class="alert alert-danger" role="alert">
+              {{ error }}
+            </div>
+        {% endif %}
+        {% if success %}
+            <div class="alert alert-success" role="alert">
+              Outbound call successfully submitted!
+            </div>
+        {% endif %}
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex align-items-center">
+                    <h3>Outbound Caller</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center mt-5">
+                <h1>Outbound Call</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center mt-5">
+                <form action="{%  url 'call_sessions:index' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group row">
+                        <div class="col-6">
+                            <input type="text" class="form-control" name="to_number" placeholder="To Number" required>
+                        </div>
+                        <div class="col-6">
+                            <input type="text" class="form-control" name="transfer_to" placeholder="Transfer Number" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+</body>
+</html>
